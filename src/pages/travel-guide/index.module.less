@@ -1,0 +1,87 @@
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: @spacing-xl;
+}
+
+.title {
+  font-size: @font-size-xl;
+  font-weight: 700;
+  margin-bottom: @spacing-sm;
+}
+
+.desc {
+  color: @color-text-secondary;
+  line-height: 1.6;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: @spacing-lg;
+}
+
+.card {
+  background: @color-surface;
+  border: 1px solid @color-border;
+  border-radius: @border-radius;
+  padding: @spacing-lg;
+  box-shadow: @shadow-sm;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: @spacing-md;
+  margin-bottom: @spacing-md;
+}
+
+.dayBadge {
+  font-size: @font-size-sm;
+  font-weight: 600;
+  color: @color-primary;
+  background: @color-primary-light;
+  padding: 4px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.cardTitle {
+  font-size: @font-size-lg;
+  font-weight: 600;
+}
+
+.highlights {
+  list-style: none;
+  margin-bottom: @spacing-md;
+
+  li {
+    padding: @spacing-sm 0;
+    padding-left: @spacing-lg;
+    position: relative;
+    color: @color-text;
+
+    &::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: @color-primary;
+      font-weight: bold;
+    }
+  }
+}
+
+.tips {
+  font-size: @font-size-sm;
+  color: @color-text-secondary;
+  line-height: 1.6;
+  padding-top: @spacing-md;
+  border-top: 1px solid @color-border;
+
+  strong {
+    color: @color-text;
+  }
+}

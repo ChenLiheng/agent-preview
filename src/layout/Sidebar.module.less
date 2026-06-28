@@ -1,0 +1,78 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: @color-sidebar-bg;
+  color: @color-sidebar-text;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: @spacing-sm;
+  padding: @spacing-lg;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.brandIcon {
+  font-size: 22px;
+}
+
+.brandText {
+  font-size: @font-size-base;
+  font-weight: 600;
+  color: #fff;
+}
+
+.menu {
+  flex: 1;
+  overflow-y: auto;
+  padding: @spacing-md 0;
+}
+
+.group {
+  margin-bottom: @spacing-md;
+}
+
+.groupTitle {
+  padding: @spacing-sm @spacing-lg;
+  font-size: @font-size-sm;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.list {
+  list-style: none;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: @spacing-md;
+  padding: @spacing-md @spacing-lg;
+  min-height: 48px;
+  color: @color-sidebar-text;
+  transition: background 0.15s, color 0.15s;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+  }
+
+  &.active {
+    background: rgba(59, 130, 246, 0.15);
+    color: @color-sidebar-active;
+    border-right: 3px solid @color-sidebar-active;
+  }
+}
+
+.linkIcon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.linkText {
+  font-size: @font-size-base;
+}
