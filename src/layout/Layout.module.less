@@ -4,10 +4,62 @@
   min-height: 100vh;
 }
 
+/* 桌面侧边栏 */
+.desktopSidebar {
+  width: @sidebar-width;
+  flex-shrink: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 100;
+  transition: transform @transition-slow;
+
+  &.sidebarCollapsed {
+    transform: translateX(-100%);
+  }
+}
+
+/* 侧边栏收起后，左侧边缘的浮动展开按钮 */
+.expandBtn {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 99;
+  width: 28px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: @color-sidebar-bg;
+  color: @color-sidebar-text;
+  border-radius: 0 @radius-md @radius-md 0;
+  font-size: 10px;
+  cursor: pointer;
+  transition: background @transition-fast, color @transition-fast;
+  border: none;
+
+  &:hover {
+    background: @color-primary;
+    color: #fff;
+  }
+
+  &:active {
+    background: @color-primary-dark;
+  }
+}
+
+/* 主内容区 */
 .main {
   flex: 1;
   min-width: 0;
-  margin-left: 60px; /* NavRail 宽度 */
+  margin-left: @sidebar-width;
+  transition: margin-left @transition-slow;
+
+  &.mainExpanded {
+    margin-left: 0;
+  }
 }
 
 .content {
@@ -98,7 +150,6 @@
     font-weight: 600;
   }
 
-  /* 抽屉覆盖层 */
   .overlay {
     position: fixed;
     inset: 0;
@@ -112,83 +163,10 @@
     top: 0;
     left: 0;
     bottom: 0;
-    width: 240px;
-    max-width: 80vw;
+    width: @sidebar-width;
+    max-width: 85vw;
     z-index: 400;
-    background: @color-sidebar-bg;
-    display: flex;
-    flex-direction: column;
     animation: slideIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .drawerHeader {
-    padding: @spacing-lg;
-    font-size: @font-size-base;
-    font-weight: 700;
-    color: #fff;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    flex-shrink: 0;
-  }
-
-  .drawerBrand {
-    font-size: @font-size-base;
-  }
-
-  .drawerNav {
-    flex: 1;
-    overflow-y: auto;
-    padding: @spacing-sm;
-  }
-
-  .drawerLink {
-    display: flex;
-    align-items: center;
-    gap: @spacing-md;
-    padding: @spacing-sm @spacing-md;
-    min-height: 44px;
-    border-radius: @radius-md;
-    color: @color-sidebar-text;
-    text-decoration: none;
-    transition: background @transition-fast, color @transition-fast;
-
-    &:hover {
-      background: @color-sidebar-hover;
-      color: #fff;
-    }
-
-    &:active {
-      background: rgba(255, 255, 255, 0.1);
-    }
-  }
-
-  .drawerActive {
-    background: rgba(52, 211, 153, 0.12);
-    color: @color-sidebar-active;
-    font-weight: 500;
-  }
-
-  .drawerIcon {
-    font-size: 18px;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-  }
-
-  .drawerLabel {
-    flex: 1;
-    font-size: @font-size-base;
-  }
-
-  .drawerGroup {
-    font-size: 11px;
-    color: rgba(255, 255, 255, 0.3);
-    font-weight: 500;
-    padding: 2px 6px;
-    background: rgba(255, 255, 255, 0.06);
-    border-radius: @radius-sm;
   }
 }
 

@@ -6,9 +6,10 @@
 
 ## 设计亮点
 
-- **垂直图标导航轨**（NavRail）— 桌面端 60px 窄轨，仅显图标，悬浮显示页面名称；移动端自动变为底部标签栏 + 抽屉菜单
-- **翡翠绿点缀 + 暖灰中性色** — 清爽高级，区别于默认蓝
-- **纯 CSS 动效** — 悬浮反馈、过渡动画、进度条渐变，尊重 `prefers-reduced-motion`
+- **可折叠侧边栏** — 点击底部「收起菜单」按钮可将侧边栏完全滑出，实现全屏预览内容；悬浮在左侧边缘的按钮可随时展开
+- **分组导航** — 侧边栏按分组展示所有页面，方便快速定位
+- **移动端底部标签栏** — 手机端自动切换为底部标签栏 + 抽屉菜单
+- **翡翠绿点缀 + 暖灰中性色** — 清爽高级
 
 ## 技术栈
 
@@ -58,21 +59,7 @@ const meta: PageMeta = {
 export default meta
 ```
 
-### index.tsx 示例
-
-```tsx
-import styles from './index.module.less'
-
-export default function MyNewPage() {
-  return (
-    <div className={styles.container}>
-      <h1>我的新页面</h1>
-    </div>
-  )
-}
-```
-
-保存后，导航轨和路由会自动更新。
+保存后，导航和路由会自动更新。
 
 ## 目录结构
 
@@ -80,9 +67,11 @@ export default function MyNewPage() {
 src/
 ├── App.tsx               # 路由入口
 ├── layout/
-│   ├── Layout.tsx        # 布局（NavRail + 内容区）
+│   ├── Layout.tsx        # 布局（侧边栏 + 内容区）
 │   ├── Layout.module.less
-│   ├── NavRail.tsx       # 导航轨组件
+│   ├── Sidebar.tsx       # 桌面侧边栏（可折叠）
+│   ├── Sidebar.module.less
+│   ├── NavRail.tsx       # 移动端底部标签栏
 │   └── NavRail.module.less
 ├── pages/
 │   ├── registry.ts       # 页面自动发现（glob 扫描）
@@ -105,6 +94,6 @@ src/
 
 ## 响应式
 
-- 桌面端（>768px）：垂直图标导航轨位于左侧，内容区全高
-- 移动端（≤768px）：顶部固定品牌栏 + 底部标签栏 + 全屏抽屉菜单
+- 桌面端（>768px）：左侧分组侧边栏，底部「收起菜单」可全屏预览内容
+- 移动端（≤768px）：顶部品牌栏 + 底部标签栏 + 抽屉菜单
 - 使用 HashRouter，避免 GitHub Pages 子路径刷新 404
