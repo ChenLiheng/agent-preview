@@ -4,20 +4,10 @@
   min-height: 100vh;
 }
 
-.desktopSidebar {
-  width: @sidebar-width;
-  flex-shrink: 0;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  z-index: 100;
-}
-
 .main {
   flex: 1;
   min-width: 0;
-  margin-left: @sidebar-width;
+  margin-left: 60px; /* NavRail 宽度 */
 }
 
 .content {
@@ -36,12 +26,9 @@
 }
 
 @media (max-width: @breakpoint-mobile) {
-  .desktopSidebar {
-    display: none;
-  }
-
   .main {
     margin-left: 0;
+    padding-bottom: 64px; /* 底部标签栏高度 */
     padding-top: @header-height;
   }
 
@@ -111,6 +98,7 @@
     font-weight: 600;
   }
 
+  /* 抽屉覆盖层 */
   .overlay {
     position: fixed;
     inset: 0;
@@ -124,10 +112,83 @@
     top: 0;
     left: 0;
     bottom: 0;
-    width: @sidebar-width;
-    max-width: 85vw;
+    width: 240px;
+    max-width: 80vw;
     z-index: 400;
+    background: @color-sidebar-bg;
+    display: flex;
+    flex-direction: column;
     animation: slideIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .drawerHeader {
+    padding: @spacing-lg;
+    font-size: @font-size-base;
+    font-weight: 700;
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    flex-shrink: 0;
+  }
+
+  .drawerBrand {
+    font-size: @font-size-base;
+  }
+
+  .drawerNav {
+    flex: 1;
+    overflow-y: auto;
+    padding: @spacing-sm;
+  }
+
+  .drawerLink {
+    display: flex;
+    align-items: center;
+    gap: @spacing-md;
+    padding: @spacing-sm @spacing-md;
+    min-height: 44px;
+    border-radius: @radius-md;
+    color: @color-sidebar-text;
+    text-decoration: none;
+    transition: background @transition-fast, color @transition-fast;
+
+    &:hover {
+      background: @color-sidebar-hover;
+      color: #fff;
+    }
+
+    &:active {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  .drawerActive {
+    background: rgba(52, 211, 153, 0.12);
+    color: @color-sidebar-active;
+    font-weight: 500;
+  }
+
+  .drawerIcon {
+    font-size: 18px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+  }
+
+  .drawerLabel {
+    flex: 1;
+    font-size: @font-size-base;
+  }
+
+  .drawerGroup {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.3);
+    font-weight: 500;
+    padding: 2px 6px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: @radius-sm;
   }
 }
 

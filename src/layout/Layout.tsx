@@ -1,7 +1,8 @@
 import { useState, useCallback } from 'react'
-import { Outlet } from 'react-router-dom'
+import { Outlet, NavLink } from 'react-router-dom'
 import { useIsMobile } from '@/hooks/useMediaQuery'
-import Sidebar from './Sidebar'
+import { visiblePages } from '@/pages/registry'
+import NavRail from './NavRail'
 import styles from './Layout.module.less'
 
 export default function Layout() {
@@ -13,6 +14,10 @@ export default function Layout() {
 
   return (
     <div className={styles.layout}>
+      {/* 桌面端：垂直图标导航轨 */}
+      {!isMobile && <NavRail />}
+
+      {/* 移动端顶部栏 */}
       {isMobile && (
         <header className={styles.mobileHeader}>
           <button
@@ -27,13 +32,6 @@ export default function Layout() {
         </header>
       )}
 
-      {/* 桌面侧边栏 */}
-      {!isMobile && (
-        <aside className={styles.desktopSidebar}>
-          <Sidebar />
-        </aside>
-      )}
-
       {/* 移动端抽屉 */}
       {isMobile && drawerOpen && (
         <>
@@ -43,10 +41,33 @@ export default function Layout() {
             aria-hidden="true"
           />
           <aside className={styles.drawer}>
-            <Sidebar onNavigate={closeDrawer} />
+            <div className={styles.drawerHeader}>
+              <span className={styles.drawerBrand}>⚡ Agent Preview</span>
+            </div>
+            <nav className={styles.drawerNav}>
+              {visiblePages.map((page) => (
+                <NavLink
+                  key={page.path}
+                  to={`/${page.path}`}
+                  className={({ isActive }) =>
+                    `${styles.drawerLink} ${isActive ? styles.drawerActive : ''}`
+                  }
+                  onClick={closeDrawer}
+                >
+                  <span className={styles.drawerIcon}>{page.meta.icon ?? '📄'}</span>
+                  <span className={styles.drawerLabel}>{page.meta.title}</span>
+                  {page.meta.group && (
+                    <span className={styles.drawerGroup}>{page.meta.group}</span>
+                  )}
+                </NavLink>
+              ))}
+            </nav>
           </aside>
         </>
       )}
+
+      {/* 移动端底部导航轨 */}
+      {isMobile && <NavRail />}
 
       <main className={styles.main}>
         <div className={styles.content}>

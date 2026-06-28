@@ -1,0 +1,191 @@
+/* 通用 */
+.rail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 60px;
+  background: @color-sidebar-bg;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 100;
+  user-select: none;
+}
+
+/* 品牌标志 */
+.brand {
+  padding: @spacing-lg 0;
+  flex-shrink: 0;
+}
+
+.brandIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  font-size: 20px;
+  border-radius: @radius-md;
+  transition: background @transition-fast;
+  cursor: default;
+}
+
+/* 导航菜单 */
+.menu {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: @spacing-sm 0;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: @radius-md;
+  color: @color-sidebar-text;
+  text-decoration: none;
+  position: relative;
+  transition: background @transition-fast, color @transition-fast;
+
+  &:hover {
+    background: @color-sidebar-hover;
+    color: #fff;
+  }
+
+  &:active {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  /* 桌面端 hover 时显示 tooltip */
+  .label {
+    display: none;
+  }
+}
+
+/* 活跃指示器 — 左侧小竖条 */
+.active {
+  background: rgba(52, 211, 153, 0.12);
+  color: @color-sidebar-active;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 20px;
+    background: @color-sidebar-active;
+    border-radius: 0 2px 2px 0;
+  }
+}
+
+/* 桌面 tooltip */
+@media (min-width: 769px) {
+  .link {
+    position: relative;
+
+    /* 用 CSS 做 tooltip，省掉 JS */
+    &:hover .label {
+      display: block;
+      position: absolute;
+      left: 52px;
+      top: 50%;
+      transform: translateY(-50%);
+      white-space: nowrap;
+      padding: 6px 10px;
+      font-size: @font-size-sm;
+      font-weight: 500;
+      color: #fff;
+      background: #292524;
+      border-radius: @radius-sm;
+      box-shadow: @shadow-md;
+      z-index: 200;
+      pointer-events: none;
+    }
+  }
+
+  .icon {
+    font-size: 18px;
+    line-height: 1;
+  }
+}
+
+/* 移动端 — 底部标签栏 */
+@media (max-width: @breakpoint-mobile) {
+  .rail {
+    top: auto;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 64px;
+    flex-direction: row;
+    align-items: stretch;
+    padding: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .brand {
+    display: none;
+  }
+
+  .menu {
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0;
+    gap: 0;
+  }
+
+  .link {
+    flex: 1;
+    height: 100%;
+    width: auto;
+    border-radius: 0;
+    gap: 2px;
+
+    &.active {
+      background: transparent;
+      position: relative;
+
+      &::before {
+        left: 50%;
+        top: 0;
+        right: auto;
+        bottom: auto;
+        transform: translateX(-50%);
+        width: 24px;
+        height: 3px;
+        border-radius: 0 0 2px 2px;
+      }
+    }
+  }
+
+  .icon {
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  .label {
+    display: block !important;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    position: static !important;
+    transform: none !important;
+    padding: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    color: inherit !important;
+  }
+}
