@@ -6,6 +6,11 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
 html,
 body,
 #root {
@@ -13,13 +18,42 @@ body,
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
-    'Noto Sans SC', sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: @font-size-base;
+  line-height: 1.6;
   color: @color-text;
   background: @color-bg;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;
+}
+
+/* 选中颜色 */
+::selection {
+  background: @color-primary-light;
+  color: @color-primary-dark;
+}
+
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: @color-border;
+  border-radius: @radius-full;
+
+  &:hover {
+    background: @color-text-secondary;
+  }
 }
 
 a {
@@ -32,4 +66,19 @@ button {
   cursor: pointer;
   border: none;
   background: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 页面通用包装 */
+.pageContainer {
+  max-width: @content-max-width;
+  padding: @spacing-xl;
+
+  @media (max-width: @breakpoint-mobile) {
+    padding: @spacing-md;
+  }
 }

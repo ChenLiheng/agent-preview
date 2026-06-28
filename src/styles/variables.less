@@ -1,29 +1,56 @@
-// 设计 token
-@color-primary: #2563eb;
-@color-primary-light: #dbeafe;
-@color-bg: #f8fafc;
-@color-surface: #ffffff;
-@color-text: #1e293b;
-@color-text-secondary: #64748b;
-@color-border: #e2e8f0;
-@color-sidebar-bg: #0f172a;
-@color-sidebar-text: #cbd5e1;
-@color-sidebar-active: #3b82f6;
+// 设计令牌 — 暖灰中性色 + 翡翠绿点缀
+// 配色体系
+@color-primary: #059669;
+@color-primary-light: #d1fae5;
+@color-primary-dark: #047857;
 
+@color-bg: #fafaf9;
+@color-surface: #ffffff;
+@color-text: #1c1917;
+@color-text-secondary: #78716c;
+@color-border: #e7e5e4;
+@color-border-light: #f5f5f4;
+
+@color-sidebar-bg: #1c1917;
+@color-sidebar-text: #a8a29e;
+@color-sidebar-active: #34d399;
+@color-sidebar-hover: rgba(255, 255, 255, 0.06);
+
+// 间距
 @spacing-xs: 4px;
 @spacing-sm: 8px;
 @spacing-md: 16px;
 @spacing-lg: 24px;
 @spacing-xl: 32px;
+@spacing-2xl: 48px;
+@spacing-3xl: 64px;
 
+// 字号
 @font-size-sm: 13px;
 @font-size-base: 15px;
 @font-size-lg: 18px;
 @font-size-xl: 24px;
+@font-size-2xl: 32px;
 
+// 圆角
+@radius-sm: 4px;
+@radius-md: 8px;
+@radius-lg: 12px;
+@radius-full: 999px;
+
+// 阴影
+@shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+@shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+@shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.1);
+@shadow-color: 0 4px 14px fade(@color-primary, 20%);
+
+// 过渡
+@transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+@transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+@transition-slow: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+
+// 布局
 @sidebar-width: 260px;
 @header-height: 56px;
 @breakpoint-mobile: 768px;
-@border-radius: 8px;
-@shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
-@shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
+@content-max-width: 1200px;

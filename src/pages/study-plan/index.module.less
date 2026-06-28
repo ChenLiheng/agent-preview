@@ -1,15 +1,17 @@
 .container {
-  max-width: 640px;
+  max-width: 620px;
   margin: 0 auto;
 }
 
 .header {
-  margin-bottom: @spacing-xl;
+  margin-bottom: @spacing-2xl;
 }
 
 .title {
-  font-size: @font-size-xl;
-  font-weight: 700;
+  font-size: @font-size-2xl;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
   margin-bottom: @spacing-sm;
 }
 
@@ -22,18 +24,18 @@
 }
 
 .progressTrack {
-  height: 8px;
-  background: @color-border;
-  border-radius: 4px;
+  height: 6px;
+  background: @color-border-light;
+  border-radius: @radius-full;
   overflow: hidden;
   margin-bottom: @spacing-sm;
 }
 
 .progressFill {
   height: 100%;
-  background: @color-primary;
-  border-radius: 4px;
-  transition: width 0.3s ease;
+  background: linear-gradient(90deg, @color-primary, @color-primary-light);
+  border-radius: @radius-full;
+  transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .progressText {
@@ -52,24 +54,37 @@
   display: flex;
   align-items: center;
   gap: @spacing-md;
-  padding: @spacing-md;
+  padding: @spacing-md @spacing-lg;
   background: @color-surface;
   border: 1px solid @color-border;
-  border-radius: @border-radius;
+  border-radius: @radius-lg;
+  transition: border-color @transition-base, box-shadow @transition-base;
+
+  &:hover {
+    border-color: @color-primary-light;
+  }
 }
 
 .checkbox {
   flex-shrink: 0;
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   border: 2px solid @color-border;
-  border-radius: 6px;
+  border-radius: @radius-md;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
+  font-size: 13px;
   color: #fff;
-  transition: background 0.2s, border-color 0.2s;
+  transition: background @transition-fast, border-color @transition-fast, transform @transition-fast;
+
+  &:hover {
+    border-color: @color-primary;
+  }
+
+  &:active {
+    transform: scale(0.92);
+  }
 
   &.checked {
     background: @color-primary;

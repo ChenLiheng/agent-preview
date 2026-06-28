@@ -4,6 +4,7 @@
   height: 100%;
   background: @color-sidebar-bg;
   color: @color-sidebar-text;
+  user-select: none;
 }
 
 .brand {
@@ -11,36 +12,37 @@
   align-items: center;
   gap: @spacing-sm;
   padding: @spacing-lg;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .brandIcon {
-  font-size: 22px;
+  font-size: 20px;
 }
 
 .brandText {
   font-size: @font-size-base;
-  font-weight: 600;
+  font-weight: 700;
   color: #fff;
+  letter-spacing: -0.01em;
 }
 
 .menu {
   flex: 1;
   overflow-y: auto;
-  padding: @spacing-md 0;
+  padding: @spacing-sm 0;
 }
 
 .group {
-  margin-bottom: @spacing-md;
+  margin-bottom: @spacing-xs;
 }
 
 .groupTitle {
-  padding: @spacing-sm @spacing-lg;
-  font-size: @font-size-sm;
+  padding: @spacing-lg @spacing-lg @spacing-sm;
+  font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.25);
 }
 
 .list {
@@ -51,28 +53,40 @@
   display: flex;
   align-items: center;
   gap: @spacing-md;
-  padding: @spacing-md @spacing-lg;
-  min-height: 48px;
+  padding: @spacing-sm @spacing-lg;
+  min-height: 44px;
+  margin: 0 @spacing-sm;
+  border-radius: @radius-md;
   color: @color-sidebar-text;
-  transition: background 0.15s, color 0.15s;
+  transition: background @transition-fast, color @transition-fast;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.06);
+    background: @color-sidebar-hover;
     color: #fff;
   }
 
+  &:active {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
   &.active {
-    background: rgba(59, 130, 246, 0.15);
+    background: rgba(52, 211, 153, 0.12);
     color: @color-sidebar-active;
-    border-right: 3px solid @color-sidebar-active;
+    font-weight: 500;
   }
 }
 
 .linkIcon {
-  font-size: 18px;
+  font-size: 16px;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
 }
 
 .linkText {
   font-size: @font-size-base;
+  line-height: 1.4;
 }

@@ -21,8 +21,13 @@
 }
 
 .content {
-  padding: @spacing-xl;
-  max-width: 1200px;
+  max-width: @content-max-width;
+  padding: @spacing-2xl @spacing-xl;
+  min-height: 100vh;
+
+  @media (max-width: @breakpoint-mobile) {
+    padding: @spacing-lg @spacing-md;
+  }
 }
 
 /* 移动端 */
@@ -41,7 +46,7 @@
   }
 
   .content {
-    padding: @spacing-md;
+    min-height: auto;
   }
 
   .mobileHeader {
@@ -65,8 +70,8 @@
     justify-content: center;
     width: 44px;
     height: 44px;
-    border-radius: @border-radius;
-    transition: background 0.15s;
+    border-radius: @radius-sm;
+    transition: background @transition-fast;
 
     &:active {
       background: rgba(255, 255, 255, 0.1);
@@ -78,6 +83,7 @@
     width: 20px;
     height: 2px;
     background: #fff;
+    border-radius: 1px;
     position: relative;
 
     &::before,
@@ -88,6 +94,7 @@
       width: 20px;
       height: 2px;
       background: #fff;
+      border-radius: 1px;
     }
 
     &::before {
@@ -109,6 +116,7 @@
     inset: 0;
     background: rgba(0, 0, 0, 0.5);
     z-index: 300;
+    animation: fadeIn 0.2s ease;
   }
 
   .drawer {
@@ -119,7 +127,7 @@
     width: @sidebar-width;
     max-width: 85vw;
     z-index: 400;
-    animation: slideIn 0.25s ease;
+    animation: slideIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
 }
 
@@ -129,5 +137,14 @@
   }
   to {
     transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

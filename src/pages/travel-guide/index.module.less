@@ -4,12 +4,14 @@
 }
 
 .header {
-  margin-bottom: @spacing-xl;
+  margin-bottom: @spacing-2xl;
 }
 
 .title {
-  font-size: @font-size-xl;
-  font-weight: 700;
+  font-size: @font-size-2xl;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
   margin-bottom: @spacing-sm;
 }
 
@@ -27,9 +29,14 @@
 .card {
   background: @color-surface;
   border: 1px solid @color-border;
-  border-radius: @border-radius;
+  border-radius: @radius-lg;
   padding: @spacing-lg;
-  box-shadow: @shadow-sm;
+  transition: border-color @transition-base, box-shadow @transition-base;
+
+  &:hover {
+    border-color: @color-border;
+    box-shadow: @shadow-md;
+  }
 }
 
 .cardHeader {
@@ -45,8 +52,9 @@
   color: @color-primary;
   background: @color-primary-light;
   padding: 4px 10px;
-  border-radius: 4px;
+  border-radius: @radius-sm;
   white-space: nowrap;
+  line-height: 1.4;
 }
 
 .cardTitle {
@@ -63,13 +71,18 @@
     padding-left: @spacing-lg;
     position: relative;
     color: @color-text;
+    line-height: 1.5;
 
     &::before {
-      content: '•';
+      content: '';
       position: absolute;
       left: 0;
-      color: @color-primary;
-      font-weight: bold;
+      top: 14px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: @color-primary-light;
+      border: 1.5px solid @color-primary;
     }
   }
 }
@@ -83,5 +96,6 @@
 
   strong {
     color: @color-text;
+    font-weight: 600;
   }
 }
